@@ -14,7 +14,7 @@ const Header = () => {
                     <div className='mx-auto  w-100 p-4'>
 
                         <img src={logo} alt="" />
-                        <p className='fs-3 fw-bold'>DCP is more than just an artist. <br /> He has created one <br />of the most dedicated <br /> online audiences & brand in electronic music.</p>
+                        <p className='fs-2 '>DCP is more than just an artist. <br /> He has created one <br />of the most dedicated <br /> online audiences & brand in electronic music.</p>
                     </div>
                 </div>
                 <div className=''>
