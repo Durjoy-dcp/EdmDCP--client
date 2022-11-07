@@ -19,7 +19,7 @@ const Home = () => {
                         }
                     </Row>
                     <div className="w-100 text-center pb-5">
-                        <Link className=''><button className='btn btn-info'>See More</button></Link>
+                        <Link to='/services' className=''><button className='btn btn-info'>See More</button></Link>
                     </div>
                 </Container>
             </div>
