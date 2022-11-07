@@ -21,7 +21,7 @@ function App() {
 
   ])
   return (
-    <div className="App">
+    <div className="text-white">
       <RouterProvider router={router}></RouterProvider>
     </div>
   );
