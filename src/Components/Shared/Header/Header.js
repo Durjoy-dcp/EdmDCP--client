@@ -4,6 +4,7 @@ import logo from '../../../assets/logo/logo.png';
 import dcp1 from '../../../assets/dcp1.jpg';
 import dcp2 from '../../../assets/dcp2.jpg';
 import dcp3 from '../../../assets/dcp3.jpg';
+import threepic from '../../../assets/threepic.png';
 
 
 const Header = () => {
@@ -20,6 +21,7 @@ const Header = () => {
                 <div className=''>
 
                     <img className='fluid w-100' style={{ maxHeight: "700px" }} src={dcp3} alt="" />
+                    {/* <img className='fluid w-100' style={{ maxHeight: "700px" }} src={threepic} alt="" /> */}
 
                     {/* <img src={dcp1} style={{ maxWidth: "200px" }} className=" border  border-2" alt="" />
                     <img src={dcp2} style={{ maxWidth: "200px" }} className=" border start-80 position-absolute top-70" alt="" /> */}

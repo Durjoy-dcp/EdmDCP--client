@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Main from './Layout/Main';
 import Home from './Components/Home/Home';
+import Services from './Components/Services/Services';
 
 function App() {
   const router = createBrowserRouter([
@@ -14,6 +15,11 @@ function App() {
         {
           path: '/',
           element: <Home></Home>,
+          loader: async () => fetch('http://localhost:5000/services')
+        },
+        {
+          path: '/services',
+          element: <Services></Services>,
           loader: async () => fetch('http://localhost:5000/services')
         }
       ]
