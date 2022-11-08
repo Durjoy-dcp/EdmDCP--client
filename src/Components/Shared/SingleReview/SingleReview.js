@@ -1,7 +1,8 @@
 import React from 'react';
-
+import moment from 'moment'
+import Moment from 'react-moment';
 const SingleReview = ({ singlerev }) => {
-    const { review, serviceId, img, name } = singlerev;
+    const { review, serviceId, img, name, date } = singlerev;
 
     return (
         <div>
@@ -11,6 +12,7 @@ const SingleReview = ({ singlerev }) => {
                 <p className='fs-5 my-2 px-2'>{name}</p>
             </div>
             <p className='fw-bolder'>{review} </p>
+            <p> <Moment fromNow>{date}</Moment></p>
             <hr />
         </div>
     );

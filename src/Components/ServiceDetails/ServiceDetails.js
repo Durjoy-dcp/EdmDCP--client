@@ -35,6 +35,7 @@ const ServiceDetails = () => {
             img: user.photoURL,
             name: user.displayName
         }
+        form.reset();
         // console.log(reviewDb)
         fetch('http://localhost:5000/review', {
             method: 'POST', // or 'PUT'
