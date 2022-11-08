@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { FaStar, FaRegClock, FaMoneyBillAlt, FaArrowCircleLeft, FaPrint } from 'react-icons/fa';
 import { Link, useLoaderData, useLocation } from 'react-router-dom';
@@ -9,12 +9,53 @@ import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 import Reviews from '../Shared/Reviews/Reviews';
 import { AuthContext } from '../../UserContext/UserContext';
+import SingleReview from '../Shared/SingleReview/SingleReview';
 
 
 const ServiceDetails = () => {
     const { user } = useContext(AuthContext);
     const service = useLoaderData();
     let location = useLocation();
+    const [newreviewdb, setnewReviewDb] = useState([])
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/review/${service._id}`)
+            .then(res => res.json())
+            .then(data => setnewReviewDb(data))
+    }, [])
+
+    const handleToReview = (event) => {
+        const form = event.target;
+        event.preventDefault();
+        const review = form.review.value;
+        const reviewDb = {
+            email: user.email,
+            review,
+            serviceId: service._id,
+            img: user.photoURL,
+            name: user.displayName
+        }
+        // console.log(reviewDb)
+        fetch('http://localhost:5000/review', {
+            method: 'POST', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(reviewDb)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    const insertedreview = reviewDb;
+                    insertedreview._id = data.insertedId;
+                    const newReview = [insertedreview, ...newreviewdb];
+                    console.log(data.insertedId);
+                    setnewReviewDb(newReview);
+
+                }
+
+            })
+    }
     console.log(service);
     return (
         <div className='services'>
@@ -68,7 +109,7 @@ const ServiceDetails = () => {
                                 {
                                     (user && user.uid) ?
                                         <>
-                                            <form>
+                                            <form onSubmit={handleToReview}>
 
 
                                                 <textarea className='w-100 p-2 m-2 bg-dark text-white' name="review" id="" rows="3"></textarea>
@@ -84,9 +125,12 @@ const ServiceDetails = () => {
                                         </>
 
                                 }
-                                <Reviews></Reviews>
-                                <Reviews></Reviews>
-
+                                {/* <Reviews></Reviews>
+                                <Reviews></Reviews> */}
+                                <h1>total review:{newreviewdb.length}</h1>
+                                {
+                                    newreviewdb.map(singlerev => <SingleReview key={singlerev._id} singlerev={singlerev}></SingleReview>)
+                                }
 
                             </Col>
                         </Row>

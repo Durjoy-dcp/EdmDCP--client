@@ -10,7 +10,7 @@ import { AuthContext } from '../../../UserContext/UserContext';
 import { FaUserAlt } from 'react-icons/fa';
 const NavHeader = () => {
     const { user, logOut } = useContext(AuthContext);
-    console.log(user);
+    // console.log(user);
     let navigate = useNavigate();
     let location = useLocation();
     let from = location.state?.from?.pathname || "/";
