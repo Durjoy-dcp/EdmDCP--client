@@ -13,6 +13,8 @@ const Services = () => {
             <Container>
                 <Row>
                     <Col xs={12} md={10}>
+
+                        <h2 className='my-3 fw-bold display-3'>Services</h2>
                         <Row className='g-4 py-5' xs={1} md={2} lg={3}>
                             {
                                 services.map(service => <ShowCards key={service._id} service={service}></ShowCards>)

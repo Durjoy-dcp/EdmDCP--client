@@ -23,8 +23,6 @@ const Header = () => {
                     <img className='fluid w-100' style={{ maxHeight: "700px" }} src={dcp3} alt="" />
                     {/* <img className='fluid w-100' style={{ maxHeight: "700px" }} src={threepic} alt="" /> */}
 
-                    {/* <img src={dcp1} style={{ maxWidth: "200px" }} className=" border  border-2" alt="" />
-                    <img src={dcp2} style={{ maxWidth: "200px" }} className=" border start-80 position-absolute top-70" alt="" /> */}
 
                 </div>
 
