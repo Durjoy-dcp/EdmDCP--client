@@ -40,6 +40,7 @@ const NavHeader = () => {
                         {
                             (user && user.uid) ? <>
                                 <NavLink to='/myreview' className="nav-link">My Reviews</NavLink>
+                                <NavLink to='/addservice' className="nav-link">Add Services</NavLink>
 
                                 {
                                     (user?.photoURL) ? <Image className='my-auto mx-3 ' roundedCircle style={{ width: "30px", height: "30px" }} src={user?.photoURL} alt={user?.displayName} title={user?.displayName} /> :

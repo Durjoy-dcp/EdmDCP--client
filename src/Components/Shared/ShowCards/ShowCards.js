@@ -14,7 +14,7 @@ const ShowCards = ({ service }) => {
             <Card className='' bg="dark" key="dark">
                 <PhotoProvider>
                     <PhotoView src={img}>
-                        <Card.Img variant="top" src={img} style={{ maxHeight: "200px" }} />
+                        <Card.Img variant="top" src={img} style={{ height: "250px" }} />
                         {/* <img src="/1-thumbnail.jpg" alt="" /> */}
                     </PhotoView>
                 </PhotoProvider>

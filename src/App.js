@@ -10,6 +10,7 @@ import Login from './Components/Login/Login';
 import SignUp from './Components/SignUp/SignUp';
 import MyReviews from './Components/MyReviews/MyReviews';
 import Protected from './Protected/Protected';
+import AddService from './Components/AddService/AddService';
 
 function App() {
   const router = createBrowserRouter([
@@ -44,6 +45,10 @@ function App() {
         {
           path: '/myreview',
           element: <Protected><MyReviews></MyReviews></Protected>
+        },
+        {
+          path: '/addservice',
+          element: <Protected><AddService></AddService></Protected>
         }
       ]
     }
