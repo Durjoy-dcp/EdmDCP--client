@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Navigate, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const AddService = () => {
     let navigate = useNavigate();
@@ -26,7 +27,8 @@ const AddService = () => {
             .then(data => {
 
                 if (data.acknowledged) {
-                    console.log("successfull")
+                    // console.log("successfull")
+                    toast("Successfully Added");
                     navigate('/services', { replace: true });
                     // const insertedreview = reviewDb;
                     // insertedreview._id = data.insertedId;

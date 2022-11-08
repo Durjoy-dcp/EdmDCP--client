@@ -11,8 +11,10 @@ import SignUp from './Components/SignUp/SignUp';
 import MyReviews from './Components/MyReviews/MyReviews';
 import Protected from './Protected/Protected';
 import AddService from './Components/AddService/AddService';
+import UserContext, { AuthContext } from './UserContext/UserContext';
 
 function App() {
+
   const router = createBrowserRouter([
     {
       path: '/',
@@ -26,7 +28,7 @@ function App() {
         {
           path: '/services',
           element: <Services></Services>,
-          loader: async () => fetch('http://localhost:5000/services')
+
         },
         {
           path: '/services/:id',
