@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { FaStar, FaRegClock, FaMoneyBillAlt, FaArrowCircleLeft, FaPrint } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
@@ -8,9 +8,11 @@ import cover from '../../assets/one_cover.jpg'
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 import Reviews from '../Shared/Reviews/Reviews';
+import { AuthContext } from '../../UserContext/UserContext';
 
 
 const ServiceDetails = () => {
+    const { user } = useContext(AuthContext);
     const service = useLoaderData();
     console.log(service);
     return (
@@ -62,6 +64,25 @@ const ServiceDetails = () => {
                             </Col>
                             <Col xs={12} md={8}>
                                 <h2 className='bebus-font  fs-1 my-2 px-2 py-1'>Reviews</h2>
+                                {
+                                    (user && user.uid) ?
+                                        <>
+                                            <form>
+
+
+                                                <textarea className='w-100 p-2 m-2 bg-dark text-white' name="review" id="" rows="3"></textarea>
+                                                <div className='d-flex justify-content-end'>
+
+                                                    <button type='submit' className='btn btn-info '>Add Review</button>
+                                                </div>
+
+                                            </form>
+                                        </> : <>
+                                            <h5 className='fw-bold border p-3'> Please <Link className='text-decoration-none ' to='/login'>Login</Link> to add a review</h5>
+
+                                        </>
+
+                                }
                                 <Reviews></Reviews>
                                 <Reviews></Reviews>
 
