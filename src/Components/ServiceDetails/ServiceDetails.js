@@ -4,20 +4,21 @@ import { FaStar, FaRegClock, FaMoneyBillAlt, FaArrowCircleLeft, FaPrint } from '
 import { Link, useLoaderData } from 'react-router-dom';
 import dcp from '../../assets/threepic.png'
 import logo from '../../assets/logo/logo.png'
+import cover from '../../assets/one_cover.jpg'
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
+import Reviews from '../Shared/Reviews/Reviews';
+
 
 const ServiceDetails = () => {
     const service = useLoaderData();
     console.log(service);
     return (
-
         <div className='services'>
             <Row className='py-5 w-100'>
                 <Col xs={12} md={10}>
                     <div className='container d-flex m-3  coursesContainer'>
                         <div className='   p-4 container rounded ' >
-
                             <div className='d-lg-flex'>
                                 <div>
                                     <PhotoProvider>
@@ -52,6 +53,21 @@ const ServiceDetails = () => {
 
                         </div>
 
+                    </div>
+                    <div className='w-100 my-2'>
+                        <Row>
+                            <Col xs={12} md={4}>
+                                <img src={cover} className="px-4 img-fluid" alt="" />
+
+                            </Col>
+                            <Col xs={12} md={8}>
+                                <h2 className='bebus-font  fs-1 my-2 px-2 py-1'>Reviews</h2>
+                                <Reviews></Reviews>
+                                <Reviews></Reviews>
+
+
+                            </Col>
+                        </Row>
                     </div>
                 </Col>
 
