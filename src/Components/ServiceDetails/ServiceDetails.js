@@ -69,7 +69,7 @@ const ServiceDetails = () => {
                                 <div>
                                     <PhotoProvider>
                                         <PhotoView src={service.img}>
-                                            <img src={service.img} alt="" style={{ MaxWidth: "420px " }} className="rounded" />
+                                            <img src={service.img} alt="" style={{ maxWidth: "280px " }} className="rounded img-fluid" />
                                         </PhotoView>
                                     </PhotoProvider >
 
@@ -129,7 +129,7 @@ const ServiceDetails = () => {
                                 }
                                 {/* <Reviews></Reviews>
                                 <Reviews></Reviews> */}
-                                <h1>total review:{newreviewdb.length}</h1>
+                                {/* <h1>total review:{newreviewdb.length}</h1> */}
                                 {
                                     newreviewdb.map(singlerev => <SingleReview key={singlerev._id} singlerev={singlerev}></SingleReview>)
                                 }

@@ -5,7 +5,7 @@ const SingleReview = ({ singlerev }) => {
     const { review, serviceId, img, name, date } = singlerev;
 
     return (
-        <div className=''>
+        <div className='p-3'>
             <div className='d-flex align-items-center my-2 '>
 
                 <img src={img} className='rounded-circle' alt="" style={{ width: "40px", height: "40px" }} />
