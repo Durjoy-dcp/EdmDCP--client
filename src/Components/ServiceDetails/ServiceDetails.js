@@ -33,7 +33,8 @@ const ServiceDetails = () => {
             review,
             serviceId: service._id,
             img: user.photoURL,
-            name: user.displayName
+            name: user.displayName,
+            title: service.name
         }
         form.reset();
         // console.log(reviewDb)

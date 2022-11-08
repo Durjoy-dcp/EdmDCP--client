@@ -43,7 +43,7 @@ function App() {
 
         {
           path: '/myreview',
-          element: <MyReviews></MyReviews>
+          element: <Protected><MyReviews></MyReviews></Protected>
         }
       ]
     }
