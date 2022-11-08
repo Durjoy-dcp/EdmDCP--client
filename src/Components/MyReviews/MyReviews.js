@@ -1,13 +1,37 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../UserContext/UserContext';
 import MyReviewSingle from '../MyReviewSingle/MyReviewSingle';
-
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import { toast } from 'react-toastify';
 
 const MyReviews = () => {
     const { user } = useContext(AuthContext);
     const [newreviewdb, setnewReviewDb] = useState([])
 
 
+    const handleToUpdate = (id, editcomment) => {
+        // console.log(id, editcomment);
+        fetch(`http://localhost:5000/review/${id}`, {
+            method: 'PATCH', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ review: editcomment })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+                    const remaining = newreviewdb.filter(ord => ord._id != id)
+                    const thatcomment = newreviewdb.find(ord => ord._id == id)
+                    thatcomment.review = editcomment;
+                    const newOrder = [thatcomment, ...remaining]
+
+                    setnewReviewDb(newOrder)
+                }
+            })
+    }
 
 
     useEffect(() => {
@@ -27,6 +51,7 @@ const MyReviews = () => {
                 .then(data => {
                     if (data.deletedCount > 0) {
                         const remaining = newreviewdb.filter(ordr => ordr._id != id)
+                        toast('Deleted');
                         setnewReviewDb(remaining)
                     }
                 })
@@ -34,13 +59,16 @@ const MyReviews = () => {
     }
     return (
         <div className='services '>
+
             <div className='container py-2'>
 
-                {
-                    newreviewdb.map(rev => <MyReviewSingle key={rev._id} handleToDelete={handleToDelete} rev={rev}></MyReviewSingle>)
+
+                {newreviewdb.length == 0 ? <div className=' position-absolute top-50  start-50 translate-middle'> <h1 className='text-center w-100 bebus-font display-1 '>No reviews were added</h1> </div> :
+                    newreviewdb.map(rev => <MyReviewSingle key={rev._id} handleToDelete={handleToDelete} handleToUpdate={handleToUpdate} rev={rev}></MyReviewSingle>)
 
                 }
             </div>
+
 
         </div>
     );
