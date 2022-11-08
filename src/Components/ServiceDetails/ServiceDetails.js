@@ -12,7 +12,7 @@ const ServiceDetails = () => {
     console.log(service);
     return (
 
-        <div>
+        <div className='services'>
             <Row className='py-5 w-100'>
                 <Col xs={12} md={10}>
                     <div className='container d-flex m-3  coursesContainer'>
@@ -27,9 +27,9 @@ const ServiceDetails = () => {
                                     </PhotoProvider >
 
                                 </div>
-                                <div className='p-3'>
-                                    <div className='d-lg-flex '>
-                                        <h1>{service.name}</h1>
+                                <div className='px-3 my-1'>
+                                    <div className=' '>
+                                        <h1 className='bebus-font display-4'>{service.name}</h1>
 
                                     </div>
 
@@ -67,9 +67,9 @@ const ServiceDetails = () => {
                         </div>
                         {/* <h1 className='fw-bold display-3 text-center'>DCP</h1> */}
                         <hr />
-                        <div className='text-secondary text-justify'>
+                        <div className=' text-justify p-3'>
 
-                            <p>Go your Music Production on High Level With DCP</p>
+                            <p className="bebus-font  fs-4">Go your Music Production on High Level With DCP</p>
                             <p>Music production is the process of developing, creating and refining recorded music for public presentation. Music production can refer to the entire lifecycle of a piece of music—from songwriting and composition to recording and sound design to mixing and mastering.
 
                                 Despite the broad definition, every workflow in modern music production has one thing in common—digital tools.
