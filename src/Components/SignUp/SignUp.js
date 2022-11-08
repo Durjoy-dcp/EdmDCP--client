@@ -16,7 +16,7 @@ const SignUp = () => {
     const [picurl, setPicurl] = useState('https://i.ibb.co/r5jVxKc/avatarimg1.png');
 
     useEffect(() => {
-        console.log(picurl);
+        // console.log(picurl);
     }, [picurl])
 
 
@@ -112,9 +112,12 @@ const SignUp = () => {
                             errormsg !== '' && <p className='text-warning'>{errormsg}</p>
                         }
                     </Form.Group>
-                    <Button variant="outline-info" type="submit">
-                        Sign Up
-                    </Button>
+                    <div className='text-center'>
+
+                        <Button variant="outline-info" type="submit">
+                            Sign Up
+                        </Button>
+                    </div>
                     <p className='my-3 p-2'><small>Already have an account? <Link className='text-decoration-none' to="/login"> create an account</Link> </small></p>
                     <Button onClick={handleTosignwithGoogle} variant="info" className="w-100 ">
                         Sign Up with Google<FaGoogle className='my-auto ms-1' />

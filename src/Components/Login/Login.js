@@ -59,9 +59,12 @@ const Login = () => {
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
 
                 </Form.Group>
-                <Button variant="outline-info" type="submit">
-                    Login
-                </Button>
+                <div className='text-center'>
+
+                    <Button variant="outline-info" type="submit" >
+                        Login
+                    </Button>
+                </div>
                 {
                     errormsg !== '' && <p>{errormsg}</p>
                 }
