@@ -18,6 +18,8 @@ const NavHeader = () => {
                     <Nav className="ms-auto">
 
                         <Link to='/services' className='nav-link'>Services</Link>
+                        <Link to='/login' className='nav-link'>Login</Link>
+                        <Link to='/signup' className='nav-link'>Sign Up</Link>
 
                         <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>

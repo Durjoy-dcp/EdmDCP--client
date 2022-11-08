@@ -6,6 +6,8 @@ import Main from './Layout/Main';
 import Home from './Components/Home/Home';
 import Services from './Components/Services/Services';
 import ServiceDetails from './Components/ServiceDetails/ServiceDetails';
+import Login from './Components/Login/Login';
+import SignUp from './Components/SignUp/SignUp';
 
 function App() {
   const router = createBrowserRouter([
@@ -28,6 +30,14 @@ function App() {
           element: <ServiceDetails></ServiceDetails>,
           loader: async ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
         },
+        {
+          path: '/login',
+          element: <Login></Login>
+        },
+        {
+          path: '/signup',
+          element: <SignUp></SignUp>
+        }
       ]
     }
 
