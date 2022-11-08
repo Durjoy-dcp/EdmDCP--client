@@ -11,8 +11,8 @@ const Services = () => {
     return (
         <div className='services'>
             <Container>
-                <Row>
-                    <Col xs={12} md={10}>
+                <Row className='w-100'>
+                    <Col xs={12} md={7} lg={10}>
 
                         <h2 className='my-3 fw-bold display-3'>Services</h2>
                         <Row className='g-4 py-5' xs={1} md={2} lg={3}>
@@ -22,7 +22,7 @@ const Services = () => {
 
                         </Row>
                     </Col>
-                    <Col xs={12} md={2}>
+                    <Col xs={12} md={5} lg={2} >
                         <div className='w-100 py-5 text-center'>
                             <img src={threePic} style={{ maxWidth: "300px" }} alt="" />
                             <img src={one_cover} style={{ maxWidth: "300px" }} alt="" />

@@ -16,7 +16,7 @@ const ServiceDetails = () => {
     return (
         <div className='services'>
             <Row className='py-5 w-100'>
-                <Col xs={12} md={10}>
+                <Col xs={12} md={7} lg={10}>
                     <div className='container d-flex m-3  coursesContainer'>
                         <div className='   p-4 container rounded ' >
                             <div className='d-lg-flex'>
@@ -74,7 +74,7 @@ const ServiceDetails = () => {
 
 
 
-                <Col xs={12} md={2}>
+                <Col xs={12} md={5} lg={2}>
                     <div className='container px-2  '>
                         <div className='text-center'>
 
