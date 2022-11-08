@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { FaStar, FaRegClock, FaMoneyBillAlt, FaArrowCircleLeft, FaPrint } from 'react-icons/fa';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useLocation } from 'react-router-dom';
 import dcp from '../../assets/threepic.png'
 import logo from '../../assets/logo/logo.png'
 import cover from '../../assets/one_cover.jpg'
@@ -14,6 +14,7 @@ import { AuthContext } from '../../UserContext/UserContext';
 const ServiceDetails = () => {
     const { user } = useContext(AuthContext);
     const service = useLoaderData();
+    let location = useLocation();
     console.log(service);
     return (
         <div className='services'>
@@ -78,7 +79,7 @@ const ServiceDetails = () => {
 
                                             </form>
                                         </> : <>
-                                            <h5 className='fw-bold border p-3'> Please <Link className='text-decoration-none ' to='/login'>Login</Link> to add a review</h5>
+                                            <h5 className='fw-bold border p-3'> Please <Link state={{ from: location }} className='text-decoration-none ' to='/login'>Login</Link> to add a review</h5>
 
                                         </>
 
