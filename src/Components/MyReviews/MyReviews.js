@@ -4,13 +4,14 @@ import MyReviewSingle from '../MyReviewSingle/MyReviewSingle';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { toast } from 'react-toastify';
+import useTitle from '../../hooks/useTitle';
 
 const MyReviews = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     const [newreviewdb, setnewReviewDb] = useState([])
     const { loading, setLoading } = useContext(AuthContext);
 
-
+    useTitle('My Reviews - Producer DCP')
 
     const handleToUpdate = (id, editcomment) => {
         // console.log(id, editcomment);
@@ -37,14 +38,23 @@ const MyReviews = () => {
 
     useEffect(() => {
 
-        fetch(`http://localhost:5000/myreview?email=${user.email}`)
-            .then(res => res.json())
+        fetch(`http://localhost:5000/myreview?email=${user.email}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    return logOut()
+                }
+                return res.json()
+            })
             .then(data => {
                 setnewReviewDb(data)
 
 
             })
-    }, [])
+    }, [user?.email, logOut])
     if (loading) {
 
         return <div className='w-100 d-flex '>

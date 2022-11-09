@@ -5,11 +5,13 @@ import ShowCards from '../Shared/ShowCards/ShowCards';
 import threePic from '../../assets/threepic.png'
 import one_cover from '../../assets/one_cover.jpg'
 import { AuthContext } from '../../UserContext/UserContext';
+import useTitle from '../../hooks/useTitle';
 
 const Services = () => {
 
     const [services, setSerVices] = useState([]);
     const { loading, setLoading } = useContext(AuthContext);
+    useTitle('Services - Producer DCP')
     useEffect(() => {
         setLoading(true)
         fetch(`http://localhost:5000/services`)

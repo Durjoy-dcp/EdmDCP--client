@@ -33,6 +33,7 @@ const UserContext = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password)
     }
     const logOut = () => {
+        localStorage.removeItem('accessToken');
         return signOut(auth);
     }
     useEffect(() => {

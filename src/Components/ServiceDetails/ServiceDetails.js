@@ -10,6 +10,7 @@ import 'react-photo-view/dist/react-photo-view.css';
 import Reviews from '../Shared/Reviews/Reviews';
 import { AuthContext } from '../../UserContext/UserContext';
 import SingleReview from '../Shared/SingleReview/SingleReview';
+import useTitle from '../../hooks/useTitle';
 
 
 const ServiceDetails = () => {
@@ -17,7 +18,7 @@ const ServiceDetails = () => {
     const service = useLoaderData();
     let location = useLocation();
     const [newreviewdb, setnewReviewDb] = useState([])
-
+    useTitle('Service Details - Producer DCP')
     useEffect(() => {
         fetch(`http://localhost:5000/review/${service._id}`)
             .then(res => res.json())

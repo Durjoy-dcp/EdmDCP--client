@@ -5,6 +5,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle, FaGithub } from 'react-icons/fa'
 import { AuthContext } from '../../UserContext/UserContext';
 import { toast } from 'react-toastify';
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
+import useTitle from '../../hooks/useTitle';
 
 const Login = () => {
     const authInfo = useContext(AuthContext);
@@ -13,6 +15,7 @@ const Login = () => {
     let navigate = useNavigate();
     let location = useLocation();
     let from = location.state?.from?.pathname || "/";
+    useTitle('Login - Producer DCP')
     const handleToLogin = (event) => {
         const form = event.target;
         event.preventDefault();
@@ -24,23 +27,42 @@ const Login = () => {
             .then(result => {
                 setErrorMsg("succssfully logged In");
                 toast("succssfully logged In");
-                navigate(from, { replace: true });
+                const user = result.user;
+                const currentuser = {
+                    email: user.email
+                }
+                console.log(currentuser)
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST', // or 'PUT'
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(currentuser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        // console.log(data);
+                        localStorage.setItem('accessToken', data.token)
+                        navigate(from, { replace: true });
+
+
+                    })
             }).catch(error => { setErrorMsg(error.message); toast.error("Failed to Sign In") })
 
 
     }
 
-    const handleTosignwithGoogle = () => {
-        SignInGoogle()
-            .then(result => {
-                setErrorMsg("succssfully logged In");
-                toast("succssfully logged In");
-                navigate(from, { replace: true });
-                setLoading(false);
-            }
-            )
-            .catch(error => { setErrorMsg(error.message); toast.error("Failed to Sign In") })
-    }
+    // const handleTosignwithGoogle = () => {
+    //     SignInGoogle()
+    //         .then(result => {
+    //             setErrorMsg("succssfully logged In");
+    //             toast("succssfully logged In");
+    //             navigate(from, { replace: true });
+    //             setLoading(false);
+    //         }
+    //         )
+    //         .catch(error => { setErrorMsg(error.message); toast.error("Failed to Sign In") })
+    // }
 
     return (
         <div>
@@ -69,9 +91,10 @@ const Login = () => {
                     errormsg !== '' && <p>{errormsg}</p>
                 }
                 <p className='my-3 p-2'><small>New here? <Link className='text-decoration-none' to="/signup"> create an account</Link> </small></p>
-                <Button onClick={handleTosignwithGoogle} variant="info" className="w-100 ">
+                {/* <Button onClick={handleTosignwithGoogle} variant="info" className="w-100 ">
                     Sign Up with Google <FaGoogle className='my-auto ms-1' />
-                </Button>
+                </Button> */}
+                <SocialLogin></SocialLogin>
 
             </Form>
         </div>

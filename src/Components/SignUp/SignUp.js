@@ -5,6 +5,8 @@ import { toast } from 'react-toastify';
 import { AuthContext } from '../../UserContext/UserContext';
 import { FaGoogle, FaGithub } from 'react-icons/fa'
 import logo from '../../assets/logo/logo.png'
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
+import useTitle from '../../hooks/useTitle';
 
 const SignUp = () => {
     const authInfo = useContext(AuthContext);
@@ -14,11 +16,11 @@ const SignUp = () => {
     let location = useLocation();
     let from = location.state?.from?.pathname || "/";
     const [picurl, setPicurl] = useState('https://i.ibb.co/r5jVxKc/avatarimg1.png');
+    useTitle('Sign Up - Producer DCP')
 
     useEffect(() => {
         // console.log(picurl);
     }, [picurl])
-
 
     const handleToSignUp = (event) => {
         const form = event.target;
@@ -37,11 +39,31 @@ const SignUp = () => {
         signUp(email, password)
             .then(result => {
 
-                setErrorMsg("succssfully logged In");
-
 
                 handletoUpdate(name, picurl);
-                navigate(from, { replace: true });
+                const user = result.user;
+                const currentuser = {
+                    email: user.email
+                }
+                console.log(currentuser)
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST', // or 'PUT'
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(currentuser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        toast("succssfully logged In");
+
+                        // console.log(data);
+                        localStorage.setItem('accessToken', data.token)
+                        navigate(from, { replace: true });
+                        setLoading(false);
+
+                    })
+
             }).catch(error => { setErrorMsg(error.message); toast.error("Failed to Sign In") })
 
 
@@ -56,19 +78,19 @@ const SignUp = () => {
             .catch(er => { })
     }
 
-    const handleTosignwithGoogle = () => {
-        SignInGoogle()
-            .then(result => {
-                setErrorMsg("succssfully logged In");
-                toast("succssfully logged In");
+    // const handleTosignwithGoogle = () => {
+    //     SignInGoogle()
+    //         .then(result => {
+    //             setErrorMsg("succssfully logged In");
+    //             toast("succssfully logged In");
 
-                navigate(from, { replace: true });
-                setLoading(false);
+    //             navigate(from, { replace: true });
+    //             setLoading(false);
 
-            }
-            )
-            .catch(error => { setErrorMsg(error.message); toast.error("Failed to Sign In") })
-    }
+    //         }
+    //         )
+    //         .catch(error => { setErrorMsg(error.message); toast.error("Failed to Sign In") })
+    // }
 
     return (
         <div>
@@ -119,9 +141,7 @@ const SignUp = () => {
                         </Button>
                     </div>
                     <p className='my-3 p-2'><small>Already have an account? <Link className='text-decoration-none' to="/login"> create an account</Link> </small></p>
-                    <Button onClick={handleTosignwithGoogle} variant="info" className="w-100 ">
-                        Sign Up with Google<FaGoogle className='my-auto ms-1' />
-                    </Button>
+                    <SocialLogin></SocialLogin>
 
                 </Form>
             </Container>

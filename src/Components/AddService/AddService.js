@@ -2,9 +2,11 @@ import React from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import useTitle from '../../hooks/useTitle';
 
 const AddService = () => {
     let navigate = useNavigate();
+    useTitle('Add Service - Producer DCP')
     const handleToadd = (event) => {
         event.preventDefault();
         const form = event.target;
