@@ -12,6 +12,7 @@ import MyReviews from './Components/MyReviews/MyReviews';
 import Protected from './Protected/Protected';
 import AddService from './Components/AddService/AddService';
 import UserContext, { AuthContext } from './UserContext/UserContext';
+import Blog from './Components/Blog/Blog';
 
 function App() {
 
@@ -51,6 +52,10 @@ function App() {
         {
           path: '/addservice',
           element: <Protected><AddService></AddService></Protected>
+        },
+        {
+          path: '/blog',
+          element: <Blog></Blog>
         }
       ]
     }

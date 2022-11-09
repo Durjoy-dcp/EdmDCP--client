@@ -34,7 +34,9 @@ const NavHeader = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
 
-                        <Link to='/services' className='nav-link'>Services</Link>
+                        <NavLink to='/services' className='nav-link'>Services</NavLink>
+                        <NavLink to='/blog' className='nav-link'>Blog</NavLink>
+
                         {/* <Link to='/login' className='nav-link'>Login</Link>
                         <Link to='/signup' className='nav-link'>Sign Up</Link> */}
                         {
