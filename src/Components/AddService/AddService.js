@@ -18,7 +18,7 @@ const AddService = () => {
             name, img, details, price
         }
         console.log(service);
-        fetch('http://localhost:5000/addservice', {
+        fetch('https://edm-producerd-dcp-server.vercel.app/addservice', {
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',

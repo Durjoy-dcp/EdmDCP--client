@@ -23,7 +23,7 @@ function App() {
         {
           path: '/',
           element: <Home></Home>,
-          loader: async () => fetch('http://localhost:5000/services?size=3')
+          loader: async () => fetch('https://edm-producerd-dcp-server.vercel.app/services?size=3')
         },
         {
           path: '/services',
@@ -33,7 +33,7 @@ function App() {
         {
           path: '/services/:id',
           element: <ServiceDetails></ServiceDetails>,
-          loader: async ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
+          loader: async ({ params }) => fetch(`https://edm-producerd-dcp-server.vercel.app/services/${params.id}`)
         },
         {
           path: '/login',

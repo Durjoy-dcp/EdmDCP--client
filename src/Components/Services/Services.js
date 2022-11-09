@@ -14,7 +14,7 @@ const Services = () => {
     useTitle('Services - Producer DCP')
     useEffect(() => {
         setLoading(true)
-        fetch(`http://localhost:5000/services`)
+        fetch(`https://edm-producerd-dcp-server.vercel.app/services`)
             .then(res => res.json())
             .then(data => {
                 setSerVices(data)

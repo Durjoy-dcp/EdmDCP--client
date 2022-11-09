@@ -20,7 +20,7 @@ const ServiceDetails = () => {
     const [newreviewdb, setnewReviewDb] = useState([])
     useTitle('Service Details - Producer DCP')
     useEffect(() => {
-        fetch(`http://localhost:5000/review/${service._id}`)
+        fetch(`https://edm-producerd-dcp-server.vercel.app/review/${service._id}`)
             .then(res => res.json())
             .then(data => setnewReviewDb(data))
     }, [])
@@ -39,7 +39,7 @@ const ServiceDetails = () => {
         }
         form.reset();
         // console.log(reviewDb)
-        fetch('http://localhost:5000/review', {
+        fetch('https://edm-producerd-dcp-server.vercel.app/review', {
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',

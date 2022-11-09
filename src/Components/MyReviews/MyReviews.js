@@ -15,7 +15,7 @@ const MyReviews = () => {
 
     const handleToUpdate = (id, editcomment) => {
         // console.log(id, editcomment);
-        fetch(`http://localhost:5000/review/${id}`, {
+        fetch(`https://edm-producerd-dcp-server.vercel.app/review/${id}`, {
             method: 'PATCH', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ const MyReviews = () => {
 
     useEffect(() => {
         setThisLoading(true);
-        fetch(`http://localhost:5000/myreview?email=${user.email}`, {
+        fetch(`https://edm-producerd-dcp-server.vercel.app/myreview?email=${user.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
             }
@@ -62,7 +62,7 @@ const MyReviews = () => {
         const proceed = window.confirm("Are You sure ,you want to cancel this order ?")
         console.log(id);
         if (proceed) {
-            fetch(`http://localhost:5000/review/${id}`, {
+            fetch(`https://edm-producerd-dcp-server.vercel.app/review/${id}`, {
                 method: "DELETE"
             })
                 .then(res => res.json())
