@@ -10,7 +10,7 @@ const Biography = () => {
                         <div className=''>
                             <h1 className='bebus-font'>BIOGRAPHY</h1>
                             <p>
-                                DCP is more than just an artist. He has created one of the most dedicated online audiences & brand in electronic music.
+                                DCP is the short form of Durjoy Chandra Paul.DCP is more than just an artist. He has created one of the most dedicated online audiences & brand in electronic music.
 
 
 

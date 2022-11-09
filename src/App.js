@@ -13,6 +13,7 @@ import Protected from './Protected/Protected';
 import AddService from './Components/AddService/AddService';
 import UserContext, { AuthContext } from './UserContext/UserContext';
 import Blog from './Components/Blog/Blog';
+import Error from './Components/Error/Error';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
     {
       path: '/',
       element: <Main></Main>,
+      errorElement: <Error></Error>,
       children: [
         {
           path: '/',
