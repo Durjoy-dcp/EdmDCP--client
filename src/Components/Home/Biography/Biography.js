@@ -3,7 +3,7 @@ import { Col, Row } from 'react-bootstrap';
 import threepic from '../../../assets/threepic.png'
 const Biography = () => {
     return (
-        <div className='services'>
+        <div className=''>
             <div className='container d-flex py-4' style={{ maxWidth: "900px" }}>
                 <Row xs={1} md={2}>
                     <Col>

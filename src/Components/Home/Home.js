@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Row } from 'react-bootstrap';
 import { Link, useLoaderData } from 'react-router-dom';
+import Contact from '../Shared/ContactUs/Contact';
 import Header from '../Shared/Header/Header';
 import ShowCards from '../Shared/ShowCards/ShowCards';
 import Biography from './Biography/Biography';
@@ -24,7 +25,11 @@ const Home = () => {
                     </div>
                 </Container>
             </div>
-            <Biography ></Biography>
+            <div className='services'>
+
+                <Biography></Biography>
+                <Contact></Contact>
+            </div>
 
         </div>
     );
