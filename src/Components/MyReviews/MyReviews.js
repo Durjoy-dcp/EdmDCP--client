@@ -9,7 +9,7 @@ import useTitle from '../../hooks/useTitle';
 const MyReviews = () => {
     const { user, logOut } = useContext(AuthContext);
     const [newreviewdb, setnewReviewDb] = useState([])
-    const { loading, setLoading } = useContext(AuthContext);
+    const [thisLoading, setThisLoading] = useState(true);
 
     useTitle('My Reviews - Producer DCP')
 
@@ -37,7 +37,7 @@ const MyReviews = () => {
     }
 
     useEffect(() => {
-
+        setThisLoading(true);
         fetch(`http://localhost:5000/myreview?email=${user.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -51,20 +51,12 @@ const MyReviews = () => {
             })
             .then(data => {
                 setnewReviewDb(data)
+                setThisLoading(false)
 
 
             })
     }, [user?.email, logOut])
-    if (loading) {
 
-        return <div className='w-100 d-flex '>
-
-            <div className="spinner-border mx-auto my-5" role="status">
-                <span className="visually-hidden">Loading...</span>
-            </div>
-        </div>
-
-    }
 
     const handleToDelete = (id) => {
         const proceed = window.confirm("Are You sure ,you want to cancel this order ?")
@@ -87,11 +79,23 @@ const MyReviews = () => {
         <div className='services '>
 
             <div className='container py-2'>
+                {
+                    thisLoading ? <div className='w-100 d-flex '>
+
+                        <div className="spinner-border mx-auto my-5" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                        </div>
+                    </div> :
 
 
-                {newreviewdb.length == 0 ? <div className=' position-absolute top-50  start-50 translate-middle'> <h1 className='text-center w-100 bebus-font display-1 '>No reviews were added</h1> </div> :
-                    newreviewdb.map(rev => <MyReviewSingle key={rev._id} handleToDelete={handleToDelete} handleToUpdate={handleToUpdate} rev={rev}></MyReviewSingle>)
+                        <div>
+                            {
 
+                                newreviewdb.length == 0 ? <div className=' position-absolute top-50  start-50 translate-middle'> <h1 className='text-center w-100 bebus-font display-1 '>No reviews were added</h1> </div> :
+                                    newreviewdb.map(rev => <MyReviewSingle key={rev._id} handleToDelete={handleToDelete} handleToUpdate={handleToUpdate} rev={rev}></MyReviewSingle>)
+
+                            }
+                        </div>
                 }
             </div>
 
