@@ -8,6 +8,8 @@ import { toast } from 'react-toastify';
 const MyReviews = () => {
     const { user } = useContext(AuthContext);
     const [newreviewdb, setnewReviewDb] = useState([])
+    const { loading, setLoading } = useContext(AuthContext);
+
 
 
     const handleToUpdate = (id, editcomment) => {
@@ -33,12 +35,26 @@ const MyReviews = () => {
             })
     }
 
-
     useEffect(() => {
+
         fetch(`http://localhost:5000/myreview?email=${user.email}`)
             .then(res => res.json())
-            .then(data => setnewReviewDb(data))
+            .then(data => {
+                setnewReviewDb(data)
+
+
+            })
     }, [])
+    if (loading) {
+
+        return <div className='w-100 d-flex '>
+
+            <div className="spinner-border mx-auto my-5" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </div>
+        </div>
+
+    }
 
     const handleToDelete = (id) => {
         const proceed = window.confirm("Are You sure ,you want to cancel this order ?")

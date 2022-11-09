@@ -9,7 +9,7 @@ import logo from '../../../assets/logo/logo.png'
 import { AuthContext } from '../../../UserContext/UserContext';
 import { FaUserAlt } from 'react-icons/fa';
 const NavHeader = () => {
-    const { user, logOut } = useContext(AuthContext);
+    const { user, logOut, loading, setLoading } = useContext(AuthContext);
     // console.log(user);
     let navigate = useNavigate();
     let location = useLocation();

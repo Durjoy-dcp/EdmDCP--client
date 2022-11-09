@@ -3,7 +3,7 @@ import { Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../UserContext/UserContext';
 
 const Protected = ({ children }) => {
-    const { loading, user } = useContext(AuthContext);
+    const { loading, user, setLoading } = useContext(AuthContext);
     let location = useLocation();
     if (loading) {
 
@@ -16,6 +16,7 @@ const Protected = ({ children }) => {
 
     }
     if (user && user.uid) {
+        setLoading(false)
         return children
     }
 
