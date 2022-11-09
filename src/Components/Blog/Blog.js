@@ -1,9 +1,12 @@
 import React from 'react';
+import useTitle from '../../hooks/useTitle';
 
 const Blog = () => {
+    useTitle('Blog - Producer DCP')
     return (
         <div className='services'>
             <div className='container p-2' style={{ maxWidth: "900px" }}>
+
                 <h1 className='bebus-font'>
                     Difference between SQL and NoSQL
                 </h1>
