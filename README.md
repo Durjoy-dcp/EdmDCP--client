@@ -21,6 +21,7 @@ This SPA is created based on React .
 - Github 
 - Firebase
 - Express - Node.js (for the server side) 
+- MongoDB (database)
 
 
 ## External Elements ,Libraries  Used 
@@ -50,6 +51,8 @@ This SPA is created based on React .
 - interesting part is the time of the review shows in a good format .E.g. : '2 hours ago'.
     Yea,it's cool to get the time like that ..and I love to use 'Moment'
 - Have 404 Page
+- Storing data on MongoDB with real-time service.
+- Firebase Authentication and hosting, jwt verified data fetching on Express on vercel.
 ## server 
 https://github.com/Durjoy-dcp/EdmDCP-server
 ## How to use
