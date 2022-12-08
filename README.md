@@ -1,7 +1,6 @@
 
 # EdmDCP
-It is a website of a edm aritst  who is a producer and help other aritsts to produce their music with many services(sound designing,promoting artists,
-mixing and mastering track).
+It is a website of a edm artist who is a producer and helps other artists to produce their music with many services(sound designing, promoting artists, mixing and mastering track). It is a  website that is structured for the 𝗖𝗥𝗨𝗗 system to understand.
 
 This website is created as a SPA(Single Page Application) with the help
 of React . React Router for routing system in a SPA ,Firebase for   authentication and  JWT for 
