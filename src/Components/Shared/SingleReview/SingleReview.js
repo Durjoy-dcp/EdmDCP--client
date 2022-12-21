@@ -12,10 +12,7 @@ const SingleReview = ({ singlerev }) => {
                 <p className='fs-5 my-2 px-2'>{name}</p>
             </div>
             <p className='fw-bolder' style={{ overflowWrap: "break-word" }}>{review} </p>
-            <div className='d-flex justify-content-end'>
 
-                <p className='p-1'> <Moment fromNow>{date}</Moment></p>
-            </div>
             <hr />
         </div>
     );

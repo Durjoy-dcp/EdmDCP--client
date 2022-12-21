@@ -4,7 +4,7 @@ import threepic from '../../../assets/threepic.png'
 const Biography = () => {
     return (
         <div className=''>
-            <div className='container d-flex py-4' style={{ maxWidth: "900px" }}>
+            <div className='container d-flex py-4' style={{ maxWidth: "900px" }} >
                 <Row xs={1} md={2}>
                     <Col>
                         <div className=''>
@@ -36,7 +36,7 @@ const Biography = () => {
                 </Row>
 
             </div>
-
+            <h1 className='container mx-auto   bebus-font bg-primary  p-2' style={{ maxWidth: "900px" }}>Elevate your production & join DCP today.</h1>
         </div>
     );
 };
