@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, Spinner } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import { FaGoogle, FaGithub } from 'react-icons/fa'
@@ -11,12 +11,13 @@ import useTitle from '../../hooks/useTitle';
 const Login = () => {
     const authInfo = useContext(AuthContext);
     const [errormsg, setErrorMsg] = useState('');
-    const { SignInGoogle, SignInGithub, setLoading, logIn } = authInfo;
+    const { SignInGoogle, SignInGithub, setLoading, logIn, loading } = authInfo;
     let navigate = useNavigate();
     let location = useLocation();
     let from = location.state?.from?.pathname || "/";
     useTitle('Login - Producer DCP')
     const handleToLogin = (event) => {
+        setLoading(true)
         const form = event.target;
         event.preventDefault();
         const email = form.email.value;
@@ -43,12 +44,22 @@ const Login = () => {
                     .then(data => {
                         // console.log(data);
                         localStorage.setItem('accessToken', data.token)
+                        setLoading(false)
                         navigate(from, { replace: true });
 
 
                     })
-            }).catch(error => { setErrorMsg(error.message); toast.error("Failed to Sign In") })
+            }).catch(error => { setLoading(false); setErrorMsg(error.message); toast.error("Failed to Sign In") })
 
+
+    }
+    if (loading) {
+        return <div className='w-100 d-flex '>
+
+            <div className="spinner-border mx-auto my-5" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </div>
+        </div>
 
     }
 
