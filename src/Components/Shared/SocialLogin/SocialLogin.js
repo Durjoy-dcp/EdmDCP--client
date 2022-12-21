@@ -38,7 +38,7 @@ const SocialLogin = () => {
 
                     })
 
-            }).catch(error => { setErrorMsg(error.message); toast.error("Failed to Sign In") })
+            }).catch(error => { setLoading(false); setErrorMsg(error.message); toast.error("Failed to Sign In") })
     }
     return (
         <div>
