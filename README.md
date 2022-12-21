@@ -1,7 +1,6 @@
 
 # EdmDCP
-It is a website of a edm aritst  who is a producer and help other aritsts to produce their music with many services(sound designing,promoting artists,
-mixing and mastering track).
+It is a website of a edm artist who is a producer and helps other artists to produce their music with many services(sound designing, promoting artists, mixing and mastering track). It is a  website that is structured for the 𝗖𝗥𝗨𝗗 system to understand.
 
 This website is created as a SPA(Single Page Application) with the help
 of React . React Router for routing system in a SPA ,Firebase for   authentication and  JWT for 
@@ -21,6 +20,7 @@ This SPA is created based on React .
 - Github 
 - Firebase
 - Express - Node.js (for the server side) 
+- MongoDB (database)
 
 
 ## External Elements ,Libraries  Used 
@@ -50,5 +50,9 @@ This SPA is created based on React .
 - interesting part is the time of the review shows in a good format .E.g. : '2 hours ago'.
     Yea,it's cool to get the time like that ..and I love to use 'Moment'
 - Have 404 Page
+- Storing data on MongoDB with real-time service.
+- Firebase Authentication and hosting, jwt verified data fetching on Express on vercel.
+## server 
+https://github.com/Durjoy-dcp/EdmDCP-server
 ## How to use
 Live website : https://edm-dcp.web.app/
