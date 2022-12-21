@@ -7,7 +7,7 @@ const Biography = () => {
             <div className='container d-flex py-4' style={{ maxWidth: "900px" }} >
                 <Row xs={1} md={2}>
                     <Col>
-                        <div className=''>
+                        <div className='' data-aos="fade-right">
                             <h1 className='bebus-font'>BIOGRAPHY</h1>
                             <p>
                                 DCP is the short form of Durjoy Chandra Paul.DCP is more than just an artist. He has created one of the most dedicated online audiences & brand in electronic music.
@@ -29,8 +29,8 @@ const Biography = () => {
                     </Col>
                     <Col>
 
-                        <div>
-                            <img className='img-fluid' src={threepic} alt="" />
+                        <div >
+                            <img className='img-fluid' data-aos="fade-left" src={threepic} alt="" />
                         </div>
                     </Col>
                 </Row>
